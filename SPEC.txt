@@ -1,0 +1,40 @@
+Project Name: mini-changelog
+Author: Leykun Hailemichael Hagos
+Öğrenci Numarası: 9241478125
+
+OVERVIEW
+mini-changelog is a simple command-line tool designed to manage project change logs. 
+It allows users to initialize a storage file and append entries describing software 
+changes, features, or fixes in a structured format.
+
+COMMANDS
+- init: 
+  Initializes the changelog by creating a file named 'changelog.txt' in the current directory. 
+  If the file already exists, it outputs: "Error: Changelog already initialized."
+  
+- add <type> <description>: 
+  Appends a new entry to 'changelog.txt'. Each entry includes an auto-incremented ID 
+  (starting from 1), the current date (YYYY-MM-DD), the change type, and a description.
+  If the file does not exist, it outputs: "Error: Changelog not initialized. Run 'init' first."
+  If arguments are missing, it outputs: "Error: Missing arguments for 'add'."
+
+- list:
+  Not yet implemented. Outputs: "Command will be implemented in future weeks"
+
+- search:
+  Not yet implemented. Outputs: "Command will be implemented in future weeks"
+
+DATA FORMAT
+Entries are stored in 'changelog.txt' using a pipe-separated format:
+id|date|type|description
+
+Example:
+1|2026-03-15|FIX|Resolved a null pointer exception.
+2|2026-03-15|FEAT|Added login functionality.
+
+ERROR HANDLING
+- Unknown command: "Error: Unknown command."
+- No command provided: "Error: No command provided."
+- Already initialized: "Error: Changelog already initialized."
+- Not initialized: "Error: Changelog not initialized. Run 'init' first."
+- Missing arguments: "Error: Missing arguments for 'add'."
