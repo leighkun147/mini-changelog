@@ -66,9 +66,10 @@ Not implemented yet (placeholder behavior).
 
 ### 5) `delete <id>`
 
-Not implemented yet (placeholder behavior).
+Deletes an entry by ID from `changelog.txt`.
 
-- Output when initialized with id: `Command will be implemented in future weeks`
+- If matching ID exists: `Deleted task #<id>`
+- If matching ID does not exist: `Task #<id> not found`
 - If file is missing: `Error: Changelog not initialized. Run 'init' first.`
 - If id missing: `Error: Missing arguments for 'delete'.`
 
@@ -106,16 +107,15 @@ Latest local status: `15 passed`.
 Only supported `init` and `add`. It used no loops or lists, meaning it could write data
 but not display it dynamically.
 
-### V1 Summary (planned goals)
+### V1 Summary
 
-The top of `solution_v1.py` now includes a task comment block describing these goals:
+V1 now uses while loops and list indexing to process changelog data into a readable
+format and support search by type. The top of `solution_v1.py` includes a task comment
+block describing these goals:
 
 1. Implement a while loop to read `changelog.txt` and display all recorded entries.
 2. Use string parsing (`split('|')`) to format output into a readable table.
 3. Add a search feature to filter entries by `type` (for example, `FIX`, `FEAT`).
-
-Note: At the moment, these V1 features are documented as tasks and are not yet fully
-implemented in command behavior.
 
 ## What Was Added/Changed in This Workspace
 

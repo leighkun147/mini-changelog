@@ -38,6 +38,38 @@ def add_entry(type_name, description):
         f_write.close()
         print("Entry added.")
 
+# Bu fonksiyon verilen ID'ye sahip girdiyi changelog dosyasından siler.
+def delete_entry(entry_id):
+    if not os.path.exists("changelog.txt"):
+        print("Error: Changelog not initialized. Run 'init' first.")
+        return
+
+    f_read = open("changelog.txt", "r")
+    lines = f_read.readlines()
+    f_read.close()
+
+    found = False
+    new_content = ""
+    i = 0
+
+    while i < len(lines):
+        parts = lines[i].strip().split("|")
+
+        if len(parts) > 0 and parts[0] == str(entry_id):
+            found = True
+        else:
+            new_content += lines[i]
+
+        i += 1
+
+    if found:
+        f_write = open("changelog.txt", "w")
+        f_write.write(new_content)
+        f_write.close()
+        print("Deleted task #" + str(entry_id))
+    else:
+        print("Task #" + str(entry_id) + " not found")
+
 # Bu fonksiyon henüz tamamlanmamış komutlar için bilgi mesajı verir.
 def future_feature(command_name, arg1=None):
     if not os.path.exists("changelog.txt"):
@@ -63,7 +95,10 @@ def main(script_name, command=None, arg1=None, arg2=None, *extra):
     elif command == "done":
         future_feature("done", arg1)
     elif command == "delete":
-        future_feature("delete", arg1)
+        if arg1 is None:
+            print("Error: Missing arguments for 'delete'.")
+        else:
+            delete_entry(arg1)
     else:
         print("Error: Unknown command.")
 

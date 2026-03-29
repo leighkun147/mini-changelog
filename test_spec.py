@@ -88,7 +88,14 @@ def test_14_delete_missing_args_error():
 
 def test_15_delete_success_future_msg():
     run_cmd(["init"])
-    assert run_cmd(["delete", "1"]) == "Command will be implemented in future weeks"
+    assert run_cmd(["delete", "1"]) == "Task #1 not found"
+
+def test_16_delete_existing_entry_success():
+    run_cmd(["init"])
+    run_cmd(["add", "FIX", "Fixed bug 1"])
+    assert run_cmd(["delete", "1"]) == "Deleted task #1"
+    with open("changelog.txt", "r") as f:
+        assert f.read() == ""
 
 if __name__ == "__main__":
     pytest.main([__file__])
