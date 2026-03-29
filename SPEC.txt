@@ -15,14 +15,22 @@ COMMANDS
 - add <type> <description>: 
   Appends a new entry to 'changelog.txt'. Each entry includes an auto-incremented ID 
   (starting from 1), the current date (YYYY-MM-DD), the change type, and a description.
-  If the file does not exist, it outputs: "Error: Changelog not initialized. Run 'init' first."
-  If arguments are missing, it outputs: "Error: Missing arguments for 'add'."
+  Error: "Error: Changelog not initialized. Run 'init' first." if missing file.
+  Error: "Error: Missing arguments for 'add'." if arguments are missing.
 
 - list:
   Not yet implemented. Outputs: "Command will be implemented in future weeks"
+  Error: "Error: Changelog not initialized. Run 'init' first." if missing file.
 
-- search:
+- done <id>:
   Not yet implemented. Outputs: "Command will be implemented in future weeks"
+  Error: "Error: Changelog not initialized. Run 'init' first." if missing file.
+  Error: "Error: Missing arguments for 'done'." if ID is missing.
+
+- delete <id>:
+  Not yet implemented. Outputs: "Command will be implemented in future weeks"
+  Error: "Error: Changelog not initialized. Run 'init' first." if missing file.
+  Error: "Error: Missing arguments for 'delete'." if ID is missing.
 
 DATA FORMAT
 Entries are stored in 'changelog.txt' using a pipe-separated format:
@@ -37,4 +45,4 @@ ERROR HANDLING
 - No command provided: "Error: No command provided."
 - Already initialized: "Error: Changelog already initialized."
 - Not initialized: "Error: Changelog not initialized. Run 'init' first."
-- Missing arguments: "Error: Missing arguments for 'add'."
+- Missing arguments: "Error: Missing arguments for '<command>'."
